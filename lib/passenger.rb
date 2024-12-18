@@ -20,6 +20,10 @@ class Passenger
     end
 
     def drive
-        @driver = true
+        if @age >= 18
+            @driver = true
+        else
+            @driver = false
+        end
     end
 end
