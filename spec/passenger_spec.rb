@@ -24,5 +24,16 @@ RSpec.describe Passenger do
     expect(@charlie.adult?).to eq(true)
     expect(@taylor.adult?).to eq(false)
   end
-  
+
+  it 'can drive' do
+    expect(@charlie.driver?).to eq(false)
+    expect(@taylor.driver?).to eq(false)
+
+    @charlie.drive
+    @taylor.drive
+
+    expect(@charlie.driver?).to eq(true)
+    expect(@taylor.driver?).to eq(false)
+  end
+
 end
