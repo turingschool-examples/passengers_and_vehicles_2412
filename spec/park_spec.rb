@@ -87,8 +87,10 @@ describe Park do
       @yellowstone.add_vehicle(@toyota)
       @yellowstone.add_vehicle(@hyundai)
       @yellowstone.add_vehicle(@ford)
+
       expect(@yellowstone.price).to eq(30)
       expect(@yellowstone.adults.length).to eq(6)
+
       expect(@yellowstone.revenue).to eq(180)
     end
   end
@@ -99,6 +101,7 @@ describe Park do
       @yellowstone.add_vehicle(@toyota)
       @yellowstone.add_vehicle(@hyundai)
       @yellowstone.add_vehicle(@ford)
+
       expect(@yellowstone.patron_names).to eq(["Charlie", "Debbie", "Fester", "Jude", "Lamar", "Pugsley", "Rick", "Taylor", "Wednesday"])
     end
   end
@@ -109,6 +112,7 @@ describe Park do
       @yellowstone.add_vehicle(@toyota)
       @yellowstone.add_vehicle(@hyundai)
       @yellowstone.add_vehicle(@ford)
+
       expect(@yellowstone.minors).to eq(["Pugsley", "Taylor", "Wednesday"])
     end
   end
@@ -119,6 +123,7 @@ describe Park do
       @yellowstone.add_vehicle(@toyota)
       @yellowstone.add_vehicle(@hyundai)
       @yellowstone.add_vehicle(@ford)
+      
       expect(@yellowstone.adults).to eq(["Charlie", "Debbie", "Fester", "Jude", "Lamar", "Rick"])
     end
   end
