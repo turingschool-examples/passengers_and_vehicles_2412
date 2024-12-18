@@ -1,6 +1,6 @@
+require './lib/passenger'
 # Use TDD to create a Passenger class that responds to the following interaction pattern.
 # For the adult? method, a Passenger is considered an adult if they are age 18 or older.
-
 
 require './lib/passenger'
 require 'pry'
@@ -28,3 +28,5 @@ class Passenger #class being created
         @driver = true #change the value of the instance variable driver to true
     end
 end
+
+
