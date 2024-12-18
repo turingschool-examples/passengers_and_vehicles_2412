@@ -20,6 +20,7 @@ class Park
   end
 
   #Later: might want to provide a printing service as well to list vehicles on terminal? (Check)
+  #If so, make this a separate class?  Can call methods from other classes, then format and print accordingly (probably needs its own tests too, ugh)
 
   def list_passengers_in_park()
     passenger_list = []
@@ -38,6 +39,11 @@ class Park
   def revenue_generated()
     #Trivial var return, due to implementation of add_vehicle()
     @revenue
+  end
+
+  def vehicles()
+    #To be compliant with instructions' naming scheme
+    @vehicles_in_park
   end
 
 end

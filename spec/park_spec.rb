@@ -28,7 +28,7 @@ RSpec.describe Park do
     @yellowstone.add_vehicle(@vehicle2)
     @yellowstone.add_vehicle(@vehicle1)
 
-    expect(@yellowstone.vehicles_in_park).to eq([@vehicle2, @vehicle1])
+    expect(@yellowstone.vehicles()).to eq([@vehicle2, @vehicle1])
   end
   
   it 'can list all passengers in the park' do
