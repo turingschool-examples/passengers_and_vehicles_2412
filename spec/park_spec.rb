@@ -64,23 +64,37 @@ RSpec.describe Park do
         it 'can tell patron names' do
             @yosemite.add_vehicle(@course)
 
-            @yosemite.passengers
+            # @yosemite.passengers
 
-            expect(@yosemite.patron_names).to eq(["Jacob", "Chase", "The Toad King"])
+            expect(@yosemite.patron_names).to eq(["Chase", "Jacob", "The Toad King"])
         end
     end
 
-    describe '#minor or adult count' do
-        it 'can tell how many minors are present' do
+    # describe '#minor or adult count' do WAS MEANT TO GIVE NAMES NOT A COUNT
+    #     it 'can tell how many minors are present' do
+    #         @yosemite.add_vehicle(@course)
+
+    #         expect(@yosemite.minors).to eq(1)
+    #     end
+
+    #     it ' can tell how many adults are present' do
+    #         @yosemite.add_vehicle(@course)
+
+    #         expect(@yosemite.adults).to eq(2)
+    #     end
+    # end
+
+    describe 'minor and adult names alphabetized' do
+        it 'can give minor names' do
             @yosemite.add_vehicle(@course)
 
-            expect(@yosemite.minors).to eq(1)
+            expect(@yosemite.minors).to eq(["Chase"])
         end
 
-        it ' can tell how many adults are present' do
+        it 'can give adult names' do
             @yosemite.add_vehicle(@course)
 
-            expect(@yosemite.adults).to eq(2)
+            expect(@yosemite.adults).to eq(["Jacob", "The Toad King"])
         end
     end
 end

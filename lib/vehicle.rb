@@ -9,12 +9,12 @@ class Vehicle
         @passengers = []
     end
 
-    def speed
-        @speeding = true
-    end
-
     def speeding?
         @speeding
+    end
+
+    def speed
+        @speeding = true
     end
 
     def add_passenger(passenger)
@@ -22,14 +22,18 @@ class Vehicle
     end
 
     def num_adults
-        @num_adults = 0
+        # @num_adults = 0
 
-        @passengers.each do |passenger|
-            if passenger.adult? == true
-                @num_adults += 1
-            end
+        # @passengers.each do |passenger|
+        #     if passenger.adult? == true
+        #         @num_adults += 1
+        #     end
+        # end
+
+        # @num_adults
+
+        @passengers.count do |passenger|
+            passenger.adult?
         end
-
-        @num_adults
     end
 end
