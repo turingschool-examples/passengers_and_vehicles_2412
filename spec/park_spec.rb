@@ -1,7 +1,9 @@
 require './spec/spec_helper.rb'
 
 # attr_reader and initialize park name and ticket price
-# 
+# add a vehicle to ann array for the instance of that park
+#             -add_vehicle(course)
+#             -vehicles = []
 
 
 RSpec.describe Park do
@@ -36,5 +38,19 @@ RSpec.describe Park do
     it 'has ticket price' do
       expect(@park_1.price).to eq(10)
     end
+  end
+
+  describe 'vehicles entry to park' do 
+    it 'adds vehicles to an array' do
+      expect(@park_1.vehicles).to eq([])
+
+      @park_1.add_vehicle(@vehicle_1)
+      @park_1.add_vehicle(@vehicle_2)
+
+      expect(@park_1.vehicles).to eq([@vehicle_1, @vehicle_2])
+    end
+
+
+    
   end
 end
