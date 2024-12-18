@@ -25,4 +25,8 @@ class Park
   def patron_names
     passengers.map(&:name).sort
   end
+
+  def minors
+    passengers.reject(&:adult?).map(&:name).sort
+  end
 end
