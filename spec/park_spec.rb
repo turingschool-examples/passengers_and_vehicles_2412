@@ -38,7 +38,30 @@ RSpec.describe do
             @park.add_passenger(@jude)
             expect(@park.revenue).to be_an(Integer)
             expect(@park.revenue).to eq(30)
+        end
 
+        it 'can track patrons' do
+            @park.add_passenger(@charlie)
+            @park.add_passenger(@taylor)
+            @park.add_passenger(@jude)
+            @park.patron_names
+            expect(@park.patron_names).to eq(["Charlie", "Jude", "Taylor"])
+        end
+
+        it 'can track minors' do
+            @park.add_passenger(@charlie)
+            @park.add_passenger(@taylor)
+            @park.add_passenger(@jude)
+            @park.minors
+            expect(@park.minors).to eq(["Taylor"])
+        end
+
+        it 'can track adults' do
+            @park.add_passenger(@charlie)
+            @park.add_passenger(@taylor)
+            @park.add_passenger(@jude)
+            @park.adults
+            expect(@park.adults).to eq(["Charlie", "Jude"])
         end
     end
 end
