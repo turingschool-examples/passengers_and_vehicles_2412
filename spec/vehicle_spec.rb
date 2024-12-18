@@ -31,11 +31,11 @@ RSpec.describe Vehicle do
     end
 
     describe '#speeding' do
-        xit 'can tell if it is speeding' do
+        it 'can tell if it is speeding' do
             expect(@vehicle.speeding?).to eq(false)
         end
 
-        xit 'can add speed and see it is speeding' do
+        it 'can add speed and see it is speeding' do
             @vehicle.speed
 
             expect(@vehicle.speeding?).to eq(true)

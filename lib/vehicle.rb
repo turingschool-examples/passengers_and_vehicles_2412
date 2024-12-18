@@ -5,6 +5,15 @@ class Vehicle
         @year = year
         @make = make
         @model = model
+        @speeding = false
         @passengers = []
+    end
+
+    def speed
+        @speeding = true
+    end
+
+    def speeding?
+        @speeding
     end
 end
