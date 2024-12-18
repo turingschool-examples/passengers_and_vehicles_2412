@@ -13,4 +13,10 @@ class Park
   def add_vehicle(vehicle)
     @vehicles << vehicle
   end
+
+  def passengers
+    return [] if @vehicles.empty?
+
+    @vehicles.map(&:passengers).flatten
+  end
 end
