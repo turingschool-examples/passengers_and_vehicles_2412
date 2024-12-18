@@ -92,4 +92,72 @@ describe Park do
       end
     end
   end
+
+  describe '#patron_names' do
+    context 'when no visitors have entered' do
+      it 'has no patrons' do
+        expect(everglades.patron_names).to eq([])
+      end
+    end
+
+    context 'when visitors have entered' do
+      before do
+        vehicle.add_passenger(taylor)
+        vehicle.add_passenger(charlie)
+        vehicle.add_passenger(jude)
+
+        everglades.add_vehicle(vehicle)
+      end
+
+      it 'lists all patron names alphabetically' do
+        expect(everglades.patron_names).to eq(%w[Charlie Jude Taylor])
+      end
+    end
+  end
+
+  describe '#minors' do
+    context 'when no visitors have entered' do
+      it 'has no minors' do
+        expect(everglades.minors).to eq([])
+      end
+    end
+
+    context 'when visitors have entered' do
+      before do
+        brad = Passenger.new({ 'name' => 'Brad', 'age' => 14 })
+        vehicle.add_passenger(taylor)
+        vehicle.add_passenger(charlie)
+        vehicle.add_passenger(jude)
+        vehicle.add_passenger(brad)
+
+        everglades.add_vehicle(vehicle)
+      end
+
+      it 'lists all minor names alphabetically' do
+        expect(everglades.minors).to eq(%w[Brad Taylor])
+      end
+    end
+  end
+
+  describe '#adults' do
+    context 'when no visitors have entered' do
+      it 'has no adults' do
+        expect(everglades.adults).to eq([])
+      end
+    end
+
+    context 'when visitors have entered' do
+      before do
+        vehicle.add_passenger(taylor)
+        vehicle.add_passenger(jude)
+        vehicle.add_passenger(charlie)
+
+        everglades.add_vehicle(vehicle)
+      end
+
+      it 'lists all adult names alphabetically' do
+        expect(everglades.adults).to eq(%w[Charlie Jude])
+      end
+    end
+  end
 end

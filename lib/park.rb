@@ -21,4 +21,16 @@ class Park
   def revenue
     passengers.count(&:adult?) * @price
   end
+
+  def patron_names
+    passengers.map(&:name).sort
+  end
+
+  def minors
+    passengers.reject(&:adult?).map(&:name).sort
+  end
+
+  def adults
+    passengers.select(&:adult?).map(&:name).sort
+  end
 end
