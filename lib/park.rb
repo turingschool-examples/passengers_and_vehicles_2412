@@ -46,4 +46,19 @@ class Park
     @vehicles_in_park
   end
 
+  def patron_names()
+    #List all patrons' names in the park (assuming only passengers in vehicles to keep this simple)
+    #Sorted alphabetically
+
+    # passenger_list = list_passengers_in_park()
+    # binding.pry
+
+    # list_passengers_in_park.name.sort_by { |passenger| passenger.name }
+    list_passengers_in_park.sort_by do |passenger|
+      passenger.name
+    end.map do |passenger_sorted|
+      passenger_sorted.name
+    end
+  end
+
 end

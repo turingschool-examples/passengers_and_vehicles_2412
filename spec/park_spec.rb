@@ -62,4 +62,18 @@ RSpec.describe Park do
     expect(@yellowstone.revenue_generated()).to eq(100)
   end
 
+  it 'can generate alphabetized list of all park patrons' do
+    @vehicle1.add_passenger(@charlie)
+    @vehicle1.add_passenger(@jude)
+    @vehicle2.add_passenger(@simone)
+    @vehicle2.add_passenger(@taylor)
+    @vehicle3.add_passenger(@finneas)
+
+    @yellowstone.add_vehicle(@vehicle1)
+    @yellowstone.add_vehicle(@vehicle2)
+    @yellowstone.add_vehicle(@vehicle3)
+
+    expect(@yellowstone.patron_names()).to eq(["Charlie", "Finneas", "Jude", "Simone", "Taylor"])
+  end
+
 end
