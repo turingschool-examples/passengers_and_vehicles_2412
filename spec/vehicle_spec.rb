@@ -27,4 +27,12 @@ RSpec.describe Vehicle do
     expect(@vehicle.speeding?()).to eq(true)
   end
 
+  it 'can add passengers to the current vehicle' do
+    @vehicle.add_passenger(@charlie)
+    @vehicle.add_passenger(@taylor)
+    @vehicle.add_passenger(@jude)
+  
+    expect(@vehicle.passengers).to eq([@charlie, @taylor, @jude])
+  end
+
 end
