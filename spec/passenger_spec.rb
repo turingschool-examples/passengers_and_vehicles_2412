@@ -10,4 +10,9 @@ RSpec.describe Passenger do
     expect(@charlie).to be_an_instance_of(Passenger)
     expect(@taylor).to be_an_instance_of(Passenger)
   end
+  it 'has name' do
+    expect(@charlie.name).to eq('Charlie')
+    expect(@taylor.name).to eq('Taylor')
+  end
+
 end
