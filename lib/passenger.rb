@@ -5,7 +5,7 @@ class Passenger
   def initialize(passenger_details)
     @name = passenger_details["name"]
     @age = passenger_details["age"]
-    @drives = false
+    @driver = false
   end
 
   def adult?
@@ -13,11 +13,11 @@ class Passenger
   end
 
   def driver?
-    return @drives
+    return @driver
   end
 
   def drive
-    @drives = true
+    @driver = true
   end
 
 end
