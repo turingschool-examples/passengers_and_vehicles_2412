@@ -2,7 +2,9 @@ require 'rspec'
 require './lib/vehicle'
 require './lib/passenger'
 
-#to run tests, type rspec spec/vehicle_spec.rb in the terminal
+# to run RSPEC
+# navigate to passengers_and_vehicles_2412 directory
+# rspec spec/vehicle_spec.rb in the terminal
 
 RSpec.describe Vehicle do
   describe '#initialize' do
