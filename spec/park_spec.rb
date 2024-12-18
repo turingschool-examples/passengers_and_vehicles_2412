@@ -23,11 +23,11 @@ describe Park do
     end
 
     it 'has an admission price' do
-      expect(everglades.admission_price).to eq(35)
+      expect(everglades.price).to eq(35)
     end
 
     it 'can have a different admission price' do
-      expect(timucuan.admission_price).to eq(5)
+      expect(timucuan.price).to eq(5)
     end
 
     it 'has no vehicles' do
@@ -67,6 +67,28 @@ describe Park do
 
       it 'lists all passengers' do
         expect(everglades.passengers).to eq([charlie, jude, taylor])
+      end
+    end
+  end
+
+  describe '#revenue' do
+    context 'when no visitors have entered' do
+      it 'has no revenue' do
+        expect(everglades.revenue).to eq(0)
+      end
+    end
+
+    context 'when visitors have entered' do
+      before do
+        vehicle.add_passenger(charlie)
+        vehicle.add_passenger(jude)
+        vehicle.add_passenger(taylor)
+
+        everglades.add_vehicle(vehicle)
+      end
+
+      it 'calculates correct revenue' do
+        expect(everglades.revenue).to eq(70)
       end
     end
   end
