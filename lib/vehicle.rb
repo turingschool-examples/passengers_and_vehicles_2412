@@ -37,9 +37,6 @@ attr_accessor :speed, :passengers, :adults
                 @adults += 1
             end
         end
-        
         return @adults
     end
-
-
 end
