@@ -43,7 +43,7 @@ RSpec.describe Park do
     park.add_vehicle(vehicle1)
     park.add_vehicle(vehicle2)
 
-    expect(park.passengers).to include(passenger1, passenger2, passenger3, passenger4)
+    expect(park.passengers.map(&:name)).to include("Charlie", "Jude", "Taylor", "Gabe")
 
   end
 
