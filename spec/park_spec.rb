@@ -47,7 +47,7 @@ RSpec.describe Park do
         it 'can tell passengers in a vehicle' do
             @yosemite.add_vehicle(@course)
 
-            expect(@yosemite.passengers).to eq([@jacob, @baby, @toadking])
+            expect(@yosemite.passengers).to eq([[@jacob, @baby, @toadking]])
         end
     end
 end
