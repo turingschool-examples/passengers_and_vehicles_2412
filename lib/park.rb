@@ -10,12 +10,14 @@ attr_reader :name, :price, :vehicles, :passengers
 
   def add_vehicle(course)
     @vehicles << course
-    @passengers << course.passengers.flatten
+    course.passengers.each {|passenger|
+      @passengers << passenger  
+    }
     return @vehicles
   end
 
   def revenue
-    return (price * (@passengers.select{|passenger| passenger.adult?}))
+    return (price * (@passengers.select{|passenger| passenger.adult?}.length))
   end
 
   def patron_names
@@ -23,12 +25,12 @@ attr_reader :name, :price, :vehicles, :passengers
   end
 
   def minors
-    minors = @passengers.select{|passenger| passenger.adult?}
+    minors = @passengers.select{|passenger| passenger.adult? == false}
     return minors.map{|minor| minor.name}.sort
   end
   
   def adults
-    adults = @passengers.select{|passenger| passenger.adult? == false}
+    adults = @passengers.select{|passenger| passenger.adult?}
     return adults.map{|adult| adult.name}.sort
   end
 
