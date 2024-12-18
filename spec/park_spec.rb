@@ -92,4 +92,26 @@ describe Park do
       end
     end
   end
+
+  describe '#patron_names' do
+    context 'when no visitors have entered' do
+      it 'has no patrons' do
+        expect(everglades.patron_names).to eq([])
+      end
+    end
+
+    context 'when visitors have entered' do
+      before do
+        vehicle.add_passenger(taylor)
+        vehicle.add_passenger(charlie)
+        vehicle.add_passenger(jude)
+
+        everglades.add_vehicle(vehicle)
+      end
+
+      it 'lists all patron names alphabetically' do
+        expect(everglades.patron_names).to eq(%w[Charlie Jude Taylor])
+      end
+    end
+  end
 end
