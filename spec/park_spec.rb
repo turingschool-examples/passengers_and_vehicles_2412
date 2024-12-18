@@ -61,8 +61,10 @@ RSpec.describe Park do
     end
 
     describe '#patrons_names' do
-        xit 'can tell patron names' do
+        it 'can tell patron names' do
             @yosemite.add_vehicle(@course)
+
+            @yosemite.passengers
 
             expect(@yosemite.patron_names).to eq(["Jacob", "Chase", "The Toad King"])
         end

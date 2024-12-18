@@ -13,7 +13,6 @@ class Park
         @entry_fee = park_details[:entry_fee]
         @vehicles = []
         @passengers = []
-        @patron_names = []
     end
 
     def add_vehicle(vehicle)
@@ -21,11 +20,19 @@ class Park
     end
 
     def passengers
+        # @vehicles.each do |vehicle|
+        #     @passengers << vehicle.passengers
+        # end
+
+        # @passengers.flatten
+
         @vehicles.each do |vehicle|
-            @passengers << vehicle.passengers
+            vehicle.passengers.each do |passenger|
+                @passengers << passenger
+            end
         end
 
-        @passengers.flatten
+        @passengers
     end
 
     def revenue
@@ -42,12 +49,19 @@ class Park
     #I couldn't get this to work. Same with the other two and using passenger.
     #I moved on for the last two tests andfound round about solutions for them at least. 
     #I bet it is something done that will haunt me forever
-        passengers = @passengers.flatten
+        # @patron_names = []
 
-        passengers.each do |passenger|
+        # passengers.each do |passenger|
+        #     @patron_names << passenger.name
+        # end
+
+        @patron_names = []
+
+        @passengers.each do |passenger|
             @patron_names << passenger.name
         end
 
+        @patron_names
     end
 
     def minors
