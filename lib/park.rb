@@ -25,4 +25,6 @@ class Park
     @revenue = @passengers.count * @price
   end
 
+  
+
 end

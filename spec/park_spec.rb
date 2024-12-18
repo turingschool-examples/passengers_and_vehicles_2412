@@ -83,27 +83,33 @@ end
 ### iteration 4
 
 
-# RSpec.describe Park do
-#   before(:each) do
-#     @park_1 = Park.new('Jackson Hole', 10)
+RSpec.describe Park do
+  before(:each) do
+    @park_1 = Park.new('Jackson Hole', 10)
 
 
-#     @vehicle_1 = Vehicle.new("2001", "Honda", "Civic")
-#     @charlie = Passenger.new({"name" => "Charlie", "age" => 18})
-#     @jude = Passenger.new({"name" => "Jude", "age" => 20})
-#     @taylor = Passenger.new({"name" => "Taylor", "age" => 12})
+    @vehicle_1 = Vehicle.new("2001", "Honda", "Civic")
+    @charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+    @jude = Passenger.new({"name" => "Jude", "age" => 20})
+    @taylor = Passenger.new({"name" => "Taylor", "age" => 12})
 
-#     @vehicle_2 = Vehicle.new("1955", "VW", 'Beetle')
-#     @patrick = Passenger.new({'name' => 'Patrick', 'age' => 24})
+    @vehicle_2 = Vehicle.new("1955", "VW", 'Beetle')
+    @patrick = Passenger.new({'name' => 'Patrick', 'age' => 24})
 
-#     @vehicle_1.add_passenger(@charlie)
-#     @vehicle_1.add_passenger(@jude)
-#     @vehicle_1.add_passenger(@taylor)
+    @vehicle_1.add_passenger(@charlie)
+    @vehicle_1.add_passenger(@jude)
+    @vehicle_1.add_passenger(@taylor)
     
-#     @vehicle_2.add_passenger(@patrick)
+    @vehicle_2.add_passenger(@patrick)
 
-#     @park_1.add_vehicle(@vehicle_1)
-#     # @park_1.add_vehicle(@vehicle_2)
-#   end
+    @park_1.add_vehicle(@vehicle_1)
+    # @park_1.add_vehicle(@vehicle_2)
+  end
 
-# end
+  it 'has names' do
+    expect(@park_1.patron_name).to eq(['Charlie', 'Jude', 'Taylor'])
+    @park_1.add_vehicle(@vehicle_2)
+    expect(@park_1.patron_name).to eq(['Charlie', 'Jude', 'Taylor', 'Patrick'])
+  end
+
+end
