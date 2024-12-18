@@ -60,6 +60,22 @@ RSpec.describe Park do
 
             expect(@park.patron_names).to eq(["Charlie","Jude","Taylor"])
         end
+
+        it "can list all minors in the park" do
+            vehicle = Vehicle.new("2001", "Honda", "Civic")
+
+            charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+            jude = Passenger.new({"name" => "Jude", "age" => 20})
+            taylor = Passenger.new({"name" => "Taylor", "age" => 12})
+
+            vehicle.add_passenger(charlie)
+            vehicle.add_passenger(jude)
+            vehicle.add_passenger(taylor)
+
+            @park.add_vehicle(vehicle)
+
+            expect(@park.minors).to eq(["Taylor"])
+        end
     end
 
     describe "revenue" do
