@@ -33,16 +33,16 @@ RSpec.describe Passenger do
     end
 
     describe '#driver?' do
-        xit 'can assess if the passenger is the driver' do
+        it 'can assess if the passenger is the driver' do
             expect(@charlie.driver?).to eq(false)
         end
     end
 
     describe '#drive' do
-        xit 'can reassign who the driver is' do
+        it 'can reassign who the driver is' do
             expect(@charlie.driver?).to eq(false)
 
-            charlie.drive
+            @charlie.drive
 
             expect(@charlie.driver?).to eq(true)
         end
