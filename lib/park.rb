@@ -2,11 +2,11 @@
 
 # Define a park with a name and admission price. Can hold vehicles.
 class Park
-  attr_reader :name, :admission_price, :vehicles
+  attr_reader :name, :price, :vehicles
 
-  def initialize(name, admission_price)
+  def initialize(name, price)
     @name = name
-    @admission_price = admission_price
+    @price = price
     @vehicles = []
   end
 
@@ -15,8 +15,10 @@ class Park
   end
 
   def passengers
-    return [] if @vehicles.empty?
-
     @vehicles.map(&:passengers).flatten
+  end
+
+  def revenue
+    passengers.count(&:adult?) * @price
   end
 end
