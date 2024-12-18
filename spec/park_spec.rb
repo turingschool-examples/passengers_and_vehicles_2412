@@ -22,7 +22,7 @@ RSpec.describe Park do
     expect(@yellowstone).to be_a(Park)
     expect(@yellowstone.name).to eq("Yellowstone")
     expect(@yellowstone.price).to eq(20)
-    expect(@yellowstone.vehicles_in_park).to eq([])
+    expect(@yellowstone.vehicles).to eq([])
   end
 
   it 'can add vehicles entering / in the park and list them' do
@@ -43,12 +43,12 @@ RSpec.describe Park do
     @yellowstone.add_vehicle(@vehicle2)
     @yellowstone.add_vehicle(@vehicle3)
 
-    expect(@yellowstone.list_passengers_in_park()).to be_a(Array)
-    expect(@yellowstone.list_passengers_in_park().length).to eq(5)    #Maybe actually list people in order w/ [] to be precise?
-    expect(@yellowstone.list_passengers_in_park()).to eq([@charlie, @jude, @simone, @taylor, @finneas])
+    expect(@yellowstone.passengers()).to be_a(Array)
+    expect(@yellowstone.passengers().length).to eq(5)
+    expect(@yellowstone.passengers()).to eq([@charlie, @jude, @simone, @taylor, @finneas])
   end
 
-  it 'can calculate revenue generated based on vehicle entries' do
+  it 'can calculate revenue generated based on vehicle and passenger entries' do
     @vehicle1.add_passenger(@charlie)
     @vehicle1.add_passenger(@jude)
     @vehicle2.add_passenger(@simone)
@@ -57,10 +57,18 @@ RSpec.describe Park do
 
     @yellowstone.add_vehicle(@vehicle1)
     @yellowstone.add_vehicle(@vehicle2)
-    expect(@yellowstone.revenue_generated()).to eq(80)
+    expect(@yellowstone.revenue()).to eq(80)
 
     @yellowstone.add_vehicle(@vehicle3)
-    expect(@yellowstone.revenue_generated()).to eq(100)
+    expect(@yellowstone.revenue()).to eq(100)
+  end
+
+  it 'helper method calculate_entrance_fee() for generating revenue works correctly' do
+    @vehicle1.add_passenger(@charlie)
+    @vehicle1.add_passenger(@simone)
+    @vehicle1.add_passenger(@taylor)
+
+    expect(@yellowstone.calculate_entrance_fee(@vehicle1)).to eq(60)
   end
 
   it 'can generate alphabetized list of all park patrons' do
@@ -70,7 +78,6 @@ RSpec.describe Park do
     @vehicle2.add_passenger(@taylor)
     @vehicle3.add_passenger(@finneas)
     @vehicle3.add_passenger(@abigail)
-
     @yellowstone.add_vehicle(@vehicle1)
     @yellowstone.add_vehicle(@vehicle2)
     @yellowstone.add_vehicle(@vehicle3)

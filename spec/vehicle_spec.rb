@@ -18,7 +18,7 @@ RSpec.describe Vehicle do
     expect(@vehicle.passengers).to eq([])
   end
 
-  it 'check if speeding' do
+  it 'check if speeding by default' do
     expect(@vehicle.speeding?()).to eq(false)
   end
   
@@ -29,10 +29,10 @@ RSpec.describe Vehicle do
 
   it 'can add passengers to the current vehicle' do
     @vehicle.add_passenger(@charlie)
-    @vehicle.add_passenger(@taylor)
     @vehicle.add_passenger(@jude)
+    @vehicle.add_passenger(@taylor)
   
-    expect(@vehicle.passengers).to eq([@charlie, @taylor, @jude])
+    expect(@vehicle.passengers).to eq([@charlie, @jude, @taylor])
   end
 
   it 'can determine the number of adults in the vehicle' do
@@ -42,7 +42,6 @@ RSpec.describe Vehicle do
     expect(@vehicle.num_adults()).to eq(1)
 
     @vehicle.add_passenger(@jude)
-
     expect(@vehicle.num_adults()).to eq(2)
   end
 

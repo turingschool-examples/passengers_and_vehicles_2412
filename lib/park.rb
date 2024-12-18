@@ -1,7 +1,7 @@
 require 'pry'
 
 class Park
-  attr_reader :name, :price, :vehicles_in_park
+  attr_reader :name, :price
 
   def initialize(name, price)
     @name = name
@@ -19,24 +19,23 @@ class Park
     @vehicles_in_park << incoming_vehicle
   end
 
-  #Later: might want to provide a printing service as well to list vehicles on terminal? (Check)
-  #If so, make this a separate class?  Can call methods from other classes, then format and print accordingly (probably needs its own tests too, ugh)
+  #Some other time: might want to provide a printing service as well to list vehicles on terminal.
+  #If so, make this a separate class?  Can call methods from e.g. Park class wherever, then format and print accordingly (probably needs its own tests too, ugh)
 
-  def list_passengers_in_park()
+  def passengers()
     passenger_list = []
     @vehicles_in_park.each do |vehicle|
       passenger_list << vehicle.passengers
     end
-    # binding.pry
-
+    #Since this is a 2D array (vehicles) of arrays (passengers), need to flatten it to 1D:
     passenger_list.flatten
   end
 
   def calculate_entrance_fee(vehicle)
-    vehicle.passengers.count * @price
+    vehicle.passengers.length * @price
   end
 
-  def revenue_generated()
+  def revenue()
     #Trivial var return, due to implementation of add_vehicle()
     @revenue
   end
@@ -47,14 +46,8 @@ class Park
   end
 
   def patron_names()
-    #List all patrons' names in the park (assuming only passengers in vehicles to keep this simple)
-    #Sorted alphabetically
-
-    # passenger_list = list_passengers_in_park()
-    # binding.pry
-
-    # list_passengers_in_park.name.sort_by { |passenger| passenger.name }
-    list_passengers_in_park.sort_by do |passenger|
+    #List all patrons' names in the park, sorted alphabetically
+    passengers.sort_by do |passenger|
       passenger.name
     end.map do |passenger_sorted|
       passenger_sorted.name
@@ -62,7 +55,8 @@ class Park
   end
 
   def adults()
-    list_passengers_in_park.find_all do |passenger|
+    #Final all adult passengers, then sort by their names, then map to an array with just their names
+    passengers.find_all do |passenger|
       passenger.adult?()
     end.sort_by do |adult|
       adult.name
@@ -72,8 +66,8 @@ class Park
   end
 
   def minors()
-    #Same song and dance as for adults() - it is actually the negated set of adults, which would save computation time to store in a 2D array...
-    list_passengers_in_park.find_all do |passenger|
+    #Same song and dance as for adults() - it is actually the negated set of adults (in another implementation this could save computational time)
+    passengers.find_all do |passenger|
       !passenger.adult?()
     end.sort_by do |minor|
       minor.name

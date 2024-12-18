@@ -24,7 +24,6 @@ class Vehicle
   end
 
   def num_adults()
-    #Run enumerable to check all passengers and tally
     @passengers.count { |passenger| passenger.adult?()}
   end
 
