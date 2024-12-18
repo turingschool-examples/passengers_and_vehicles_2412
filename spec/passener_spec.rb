@@ -26,7 +26,7 @@ RSpec.describe Passenger do
     end
 
     describe '#adult?' do
-        xit 'can assess if it is an adult or not' do
+        it 'can assess if it is an adult or not' do
             expect(@charlie.adult?).to eq(true)
             expect(@taylor.adult?).to eq(false)
         end
