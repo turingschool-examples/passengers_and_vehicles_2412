@@ -21,4 +21,8 @@ class Vehicle
     def add_passenger(passenger)
         @passengers << passenger
     end
+
+    def num_adults
+        @passengers.find_all {|passenger| passenger.adult?}.size
+    end
 end
