@@ -2,6 +2,7 @@ require 'rspec'
 require './lib/park'
 require './lib/vehicle'
 require './lib/passenger'
+require 'pry'
 
 RSpec.describe Park do
     before(:each) do
@@ -46,7 +47,7 @@ RSpec.describe Park do
     describe '#passengers' do
         it 'can tell passengers in a vehicle' do
             @yosemite.add_vehicle(@course)
-
+        
             expect(@yosemite.passengers).to eq([@jacob, @baby, @toadking])
         end
     end
@@ -56,6 +57,28 @@ RSpec.describe Park do
             @yosemite.add_vehicle(@course)
 
             expect(@yosemite.revenue).to eq(200)
+        end
+    end
+
+    describe '#patrons_names' do
+        xit 'can tell patron names' do
+            @yosemite.add_vehicle(@course)
+
+            expect(@yosemite.patron_names).to eq(["Jacob", "Chase", "The Toad King"])
+        end
+    end
+
+    describe '#minor or adult count' do
+        it 'can tell how many minors are present' do
+            @yosemite.add_vehicle(@course)
+
+            expect(@yosemite.minors).to eq(1)
+        end
+
+        it ' can tell how many adults are present' do
+            @yosemite.add_vehicle(@course)
+
+            expect(@yosemite.adults).to eq(2)
         end
     end
 end
