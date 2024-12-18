@@ -1,5 +1,5 @@
 class Park
-    attr_reader
+    attr_reader :park_name, :entry_fee, :vehicles
 
     def initialize(park_details)
         @park_name = park_details[:park_name]
@@ -9,5 +9,13 @@ class Park
 
     def add_vehicle(vehicle)
         @vehicles << vehicle
+    end
+
+    def passengers
+
+    end
+
+    def revenue
+
     end
 end
