@@ -15,11 +15,17 @@ class Vehicle
   end
 
   def speed()
+    #Wait a minute, aren't we all law-abiding citizens?
     @is_speeding = true
   end
 
   def add_passenger(passenger)
     @passengers << passenger
+  end
+
+  def num_adults()
+    #Run enumerable to check all passengers and tally
+    @passengers.count { |passenger| passenger.adult?()}
   end
 
 end
