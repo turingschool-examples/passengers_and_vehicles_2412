@@ -48,9 +48,21 @@ RSpec.describe Park do
       @park_1.add_vehicle(@vehicle_2)
 
       expect(@park_1.vehicles).to eq([@vehicle_1, @vehicle_2])
+    end  
+  end
+
+  describe 'adding to the park passengers' do
+    before(:each) do
+      @park_1.add_vehicle(@vehicle_1)
     end
 
+    it 'can add passengers' do
+      expect(@park_1.passengers).to eq([@charlie, @jude, @taylor])
 
-    
+      @park_1.add_vehicle(@vehicle_2)
+
+      expect(@park_1.passengers).to eq([@charlie, @jude, @taylor, @patrick])
+    end
   end
+
 end
