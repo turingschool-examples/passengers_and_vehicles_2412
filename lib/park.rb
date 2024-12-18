@@ -5,6 +5,7 @@ class Park
               :price,
               :vehicles,
               :passengers,
+              :revenue
 
 
   def initialize(name, price)
@@ -12,6 +13,7 @@ class Park
     @price = price
     @vehicles = []
     @passengers = []
+    @revenue = 0
   end
 
   def add_vehicle(vehicle)
@@ -22,8 +24,7 @@ class Park
   end
 
   def revenue
-
-
+    @revenue += @passenger.count * @price
   end
 
 end
