@@ -29,4 +29,26 @@ RSpec.describe Vehicle do
             expect(@vehicle.model).to eq("Civic")
         end
     end
+
+    describe '#speeding' do
+        xit 'can tell if it is speeding' do
+            expect(@vehicle.speeding?).to eq(false)
+        end
+
+        xit 'can add speed and see it is speeding' do
+            @vehicle.speed
+
+            expect(@vehicle.speeding?).to eq(true)
+        end
+    end
+
+    describe '#passengers' do
+        xit 'can carry passengers' do
+            @vehicle.add_passenger(@charlie)
+            @vehicle.add_passenger(@jude)
+            @vehicle.add_passenger(@taylor)
+
+            expect(@vehicle.passengers).to eq([@charlie, @jude, @taylor])
+        end
+    end
 end
