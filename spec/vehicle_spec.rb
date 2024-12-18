@@ -11,21 +11,21 @@ RSpec.describe Vehicle do
     end
 
     describe '#initialize' do
-        xit 'is an instance of a Vehicle' do
+        it 'is an instance of a Vehicle' do
             expect(@vehicle).to be_an_instance_of(Vehicle)
         end
     end
 
     describe 'initialized traits' do
-        xit 'can tell year' do
+        it 'can tell year' do
             expect(@vehicle.year).to eq("2001")
         end
 
-        xit 'can tell make' do
+        it 'can tell make' do
             expect(@vehicle.make).to eq("Honda")
         end
 
-        xit 'can tell model' do
+        it 'can tell model' do
             expect(@vehicle.model).to eq("Civic")
         end
     end
@@ -42,13 +42,23 @@ RSpec.describe Vehicle do
         end
     end
 
-    describe '#passengers' do
+    describe '#passengers information' do
         xit 'can carry passengers' do
+            expect(@vehicle.passengers).to eq([])
+
             @vehicle.add_passenger(@charlie)
             @vehicle.add_passenger(@jude)
             @vehicle.add_passenger(@taylor)
 
             expect(@vehicle.passengers).to eq([@charlie, @jude, @taylor])
+        end
+
+        xit 'can tell how many adults it carries' do
+            @vehicle.add_passenger(@charlie)
+            @vehicle.add_passenger(@jude)
+            @vehicle.add_passenger(@taylor)
+
+            expect(@vehicle.num_adults).to eq(2)
         end
     end
 end
