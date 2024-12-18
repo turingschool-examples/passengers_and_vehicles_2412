@@ -14,9 +14,7 @@ class Park
 
     def passengers
         passengers = []
-        @vehicles.each do |vehicle|
-            passengers << vehicle.passengers
-        end
+        @vehicles.each { |vehicle| passengers << vehicle.passengers }
         passengers.flatten
     end
 
