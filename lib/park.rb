@@ -18,13 +18,11 @@ class Park
 
   def add_vehicle(vehicle)
     @vehicles << vehicle
-    list_class = @vehicles.each {|x| x.passengers}
-    passenger_list = list_class.flat_map {|y| y.passengers}
-    passenger_list.each {|passenger| @passengers << passenger}
+    vehicle.passengers.each { |passenger| @passengers << passenger }
   end
 
   def revenue
-    @revenue += @passenger.count * @price
+    @revenue = @passengers.count * @price
   end
 
 end
