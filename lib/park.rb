@@ -12,15 +12,11 @@ class Park
   end
 
   def add_vehicle(incoming_vehicle)
-    #This method assumes that by 'adding' the vehicle, it is entering the park and being charged;
-    #and so the passegers must (and do) pay the entrance fee
+    #This method assumes that by 'adding' the vehicle, it is entering the park and being charged, and so the passegers pay the entrance fee
     #Alternate: don't use instance var @revenue, just deduce from # vehicles in park (but risky - vehicles could leave, so need history)
     @revenue += calculate_entrance_fee(incoming_vehicle)
     @vehicles_in_park << incoming_vehicle
   end
-
-  #Some other time: might want to provide a printing service as well to list vehicles on terminal.
-  #If so, make this a separate class?  Can call methods from e.g. Park class wherever, then format and print accordingly (probably needs its own tests too, ugh)
 
   def passengers()
     passenger_list = []
@@ -75,5 +71,8 @@ class Park
       minor_sorted.name
     end
   end
+
+  #Some other time: might want to provide a printing service as well to list various queries on the terminal.
+  #If so, make this a separate class maybe?  Can call methods from e.g. Park class wherever, then format and print accordingly (probably needs its own tests too, ugh)
 
 end
