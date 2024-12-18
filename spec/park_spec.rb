@@ -48,4 +48,26 @@ describe Park do
       expect(timucuan.vehicles).to eq([])
     end
   end
+
+  describe '#passengers' do
+    context 'when no passengers have been added' do
+      it 'has no passengers' do
+        expect(everglades.passengers).to eq([])
+      end
+    end
+
+    context 'when passengers have been added' do
+      before do
+        vehicle.add_passenger(charlie)
+        vehicle.add_passenger(jude)
+        vehicle.add_passenger(taylor)
+
+        everglades.add_vehicle(vehicle)
+      end
+
+      it 'lists all passengers' do
+        expect(everglades.passengers).to eq([charlie, jude, taylor])
+      end
+    end
+  end
 end
