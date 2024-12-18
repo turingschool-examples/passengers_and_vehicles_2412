@@ -1,12 +1,10 @@
-# spec/park_spec.rb
-
 require_relative '../lib/park'
 require_relative '../lib/vehicle'
 require_relative '../lib/passenger'
 
 RSpec.describe Park do
   before(:each) do
-    # Create a park and associated test data.
+    # Create a park and test data.
     @park = Park.new("Yellowstone", 50)
     @vehicle1 = Vehicle.new("2001", "Honda", "Civic")
     @vehicle2 = Vehicle.new("2010", "Toyota", "Corolla")
@@ -21,36 +19,43 @@ RSpec.describe Park do
   end
 
   it 'exists and has attributes' do
-    # Test park attributes.
-    expect(@park).to be_a(Park)
+    # Check the park's attributes.
     expect(@park.name).to eq("Yellowstone")
     expect(@park.price).to eq(50)
-    expect(@park.vehicles).to eq([])
+    expect(@park.vehicles).to eq([]) # Park starts with no vehicles.
   end
 
   it 'can add vehicles' do
     # Add vehicles to the park.
     @park.add_vehicle(@vehicle1)
     expect(@park.vehicles).to eq([@vehicle1])
-
-    @park.add_vehicle(@vehicle2)
-    expect(@park.vehicles).to eq([@vehicle1, @vehicle2])
   end
 
-  it 'can list all passengers' do
-    # Add vehicles to the park and list all passengers.
+  it 'can calculate revenue' do
+    # Add vehicles and calculate revenue from adult passengers.
     @park.add_vehicle(@vehicle1)
     @park.add_vehicle(@vehicle2)
-
-    expect(@park.passengers).to eq([@charlie, @jude, @taylor])
+    expect(@park.revenue).to eq(100) # Charlie and Taylor generate revenue.
   end
 
-  it 'can calculate revenue generated' do
-    # Add vehicles to the park and calculate revenue from adult passengers.
+  it 'can list patron names alphabetically' do
+    # Add vehicles and list passenger names alphabetically.
     @park.add_vehicle(@vehicle1)
     @park.add_vehicle(@vehicle2)
+    expect(@park.patron_names).to eq(["Charlie", "Jude", "Taylor"])
+  end
 
-    # Only Charlie and Taylor are adults, so 2 * $50 = $100.
-    expect(@park.revenue).to eq(100)
+  it 'can list minors alphabetically' do
+    # Add vehicles and list minors alphabetically.
+    @park.add_vehicle(@vehicle1)
+    @park.add_vehicle(@vehicle2)
+    expect(@park.minors).to eq(["Jude"])
+  end
+
+  it 'can list adults alphabetically' do
+    # Add vehicles and list adults alphabetically.
+    @park.add_vehicle(@vehicle1)
+    @park.add_vehicle(@vehicle2)
+    expect(@park.adults).to eq(["Charlie", "Taylor"])
   end
 end

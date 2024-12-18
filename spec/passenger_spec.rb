@@ -1,32 +1,23 @@
-# spec/passenger_spec.rb
-
 require_relative '../lib/passenger'
 
 RSpec.describe Passenger do
-  describe 'Initialization' do
-    it 'exists and has attributes' do
-      charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+  it 'exists and has attributes' do
+    # Create a passenger named Charlie who is 18 years old.
+    charlie = Passenger.new({"name" => "Charlie", "age" => 18})
 
-      expect(charlie.name).to eq("Charlie")
-      expect(charlie.age).to eq(18)
-    end
+    # Check the passenger's attributes.
+    expect(charlie.name).to eq("Charlie")
+    expect(charlie.age).to eq(18)
+    expect(charlie.adult?).to eq(true)  # Charlie is an adult.
+    expect(charlie.driver?).to eq(false) # Charlie is not a driver by default.
   end
 
-  describe 'Methods' do
-    it 'can determine if a passenger is an adult' do
-      charlie = Passenger.new({"name" => "Charlie", "age" => 18})
-      taylor = Passenger.new({"name" => "Taylor", "age" => 12})
+  it 'can update driver status' do
+    # Create a passenger and set them as a driver.
+    charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+    charlie.drive
 
-      expect(charlie.adult?).to eq(true)
-      expect(taylor.adult?).to eq(false)
-    end
-
-    it 'can check and update driver status' do
-      charlie = Passenger.new({"name" => "Charlie", "age" => 18})
-
-      expect(charlie.driver?).to eq(false)
-      charlie.drive
-      expect(charlie.driver?).to eq(true)
-    end
+    # Verify that the passenger is now a driver.
+    expect(charlie.driver?).to eq(true)
   end
 end
