@@ -29,4 +29,8 @@ class Park
     def minors
         passengers.find_all{ |passenger| !passenger.adult? }.map(&:name)
     end
+
+    def adults
+        passengers.find_all{ |passenger| passenger.adult? }.map(&:name)
+    end
 end
