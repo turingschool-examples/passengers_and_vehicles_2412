@@ -18,7 +18,7 @@ class Park
             @passengers << vehicle.passengers
         end
 
-        @passengers
+        @passengers.flatten
     end
 
     def revenue
