@@ -1,3 +1,5 @@
+require 'pry'
+
 class Park
   attr_reader :name, :price, :vehicles_in_park
 
@@ -13,5 +15,15 @@ class Park
   end
 
   #Later: might want to provide a printing service as well to list vehicles on terminal? (Check)
-  
+
+  def list_passengers_in_park()
+    passenger_list = []
+    @vehicles_in_park.each do |vehicle|
+      passenger_list << vehicle.passengers
+    end
+    # binding.pry
+
+    passenger_list.flatten
+  end
+
 end
