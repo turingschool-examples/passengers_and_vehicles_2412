@@ -21,4 +21,16 @@ class Park
     def revenue
         passengers.find_all(&:adult?).size * @price
     end
+
+    def patron_names
+        passengers.map(&:name)
+    end
+
+    def minors
+        passengers.find_all{ |passenger| !passenger.adult? }.map(&:name)
+    end
+
+    def adults
+        passengers.find_all{ |passenger| passenger.adult? }.map(&:name)
+    end
 end
