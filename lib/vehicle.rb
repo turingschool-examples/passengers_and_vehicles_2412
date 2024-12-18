@@ -1,5 +1,5 @@
 class Vehicle
-  attr_reader :year, :make, :model
+  attr_reader :year, :make, :model, :passengers
 
   
   def initialize(year, make, model)
@@ -7,6 +7,7 @@ class Vehicle
     @make = make
     @model = model
     @speeding = false
+    @passengers = []
       
 
   end
@@ -19,4 +20,12 @@ class Vehicle
     @speeding = true
   end
 
+  def add_passenger(passenger)
+    @passengers << passenger
+  end
+
+  def num_adults
+    @passengers.count { |passenger| 
+    passenger.age >= 18 }
+  end
 end
