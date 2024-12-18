@@ -3,8 +3,8 @@ require './lib/passenger'
 
 RSpec.describe Passenger do
     before(:each) do
-        @charlie = Passenger.new({"name" => "Charlie", "age" => 18})
-        @taylor = Passenger.new({"name" => "Taylor", "age" => 12})
+        @charlie = Passenger.new({name: "Charlie", age: 18})
+        @taylor = Passenger.new({name: "Taylor", age: 12})
     end
 
     describe '#initialize' do
@@ -14,13 +14,13 @@ RSpec.describe Passenger do
     end
 
     describe '#name' do
-        xit 'can tell its name' do
+        it 'can tell its name' do
             expect(@charlie.name).to eq("Charlie")
         end
     end
 
     describe '#age' do
-        xit 'can tell its age' do
+        it 'can tell its age' do
             expect(@charlie.age).to eq(18)
         end
     end
