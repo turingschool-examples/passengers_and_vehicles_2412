@@ -19,4 +19,8 @@ class Park
         end
         passengers.flatten
     end
+
+    def revenue
+        passengers.find_all(&:adult?).size * @price
+    end
 end
