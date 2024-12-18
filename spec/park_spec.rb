@@ -50,4 +50,12 @@ RSpec.describe Park do
             expect(@yosemite.passengers).to eq([@jacob, @baby, @toadking])
         end
     end
+
+    describe '#revenue' do
+        it 'can calculate revenue by passenger' do
+            @yosemite.add_vehicle(@course)
+
+            expect(@yosemite.revenue).to eq(200)
+        end
+    end
 end
