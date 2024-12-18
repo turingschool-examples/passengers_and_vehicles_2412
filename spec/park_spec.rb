@@ -15,6 +15,7 @@ RSpec.describe Park do
     @jude = Passenger.new({"name" => "Jude", "age" => 20})
     @finneas = Passenger.new({"name" => "Finneas", "age" => 30})
     @simone = Passenger.new({"name" => "Simone", "age" => 34})
+    @abigail = Passenger.new({"name" => "Abigail", "age" => 14})
   end
 
   it 'can initialize' do
@@ -68,12 +69,43 @@ RSpec.describe Park do
     @vehicle2.add_passenger(@simone)
     @vehicle2.add_passenger(@taylor)
     @vehicle3.add_passenger(@finneas)
+    @vehicle3.add_passenger(@abigail)
 
     @yellowstone.add_vehicle(@vehicle1)
     @yellowstone.add_vehicle(@vehicle2)
     @yellowstone.add_vehicle(@vehicle3)
 
-    expect(@yellowstone.patron_names()).to eq(["Charlie", "Finneas", "Jude", "Simone", "Taylor"])
+    expect(@yellowstone.patron_names()).to eq(["Abigail", "Charlie", "Finneas", "Jude", "Simone", "Taylor"])
+  end
+
+  it 'can generate alphabetized list of all adult patrons' do
+    @vehicle1.add_passenger(@charlie)
+    @vehicle1.add_passenger(@jude)
+    @vehicle2.add_passenger(@simone)
+    @vehicle2.add_passenger(@taylor)
+    @vehicle3.add_passenger(@finneas)
+    @vehicle3.add_passenger(@abigail)
+    @yellowstone.add_vehicle(@vehicle1)
+    @yellowstone.add_vehicle(@vehicle2)
+    @yellowstone.add_vehicle(@vehicle3)
+
+    expect(@yellowstone.adults().length).to eq(4)
+    expect(@yellowstone.adults()).to eq(["Charlie", "Finneas", "Jude", "Simone"])
+  end
+
+  it 'can generate alphabetized list of all minor patrons' do
+    @vehicle1.add_passenger(@charlie)
+    @vehicle1.add_passenger(@jude)
+    @vehicle2.add_passenger(@simone)
+    @vehicle2.add_passenger(@taylor)
+    @vehicle3.add_passenger(@finneas)
+    @vehicle3.add_passenger(@abigail)
+    @yellowstone.add_vehicle(@vehicle1)
+    @yellowstone.add_vehicle(@vehicle2)
+    @yellowstone.add_vehicle(@vehicle3)
+
+    expect(@yellowstone.minors().length).to eq(2)
+    expect(@yellowstone.minors()).to eq(["Abigail", "Taylor"])
   end
 
 end

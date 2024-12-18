@@ -61,4 +61,25 @@ class Park
     end
   end
 
+  def adults()
+    list_passengers_in_park.find_all do |passenger|
+      passenger.adult?()
+    end.sort_by do |adult|
+      adult.name
+    end.map do |adult_sorted|
+      adult_sorted.name
+    end
+  end
+
+  def minors()
+    #Same song and dance as for adults() - it is actually the negated set of adults, which would save computation time to store in a 2D array...
+    list_passengers_in_park.find_all do |passenger|
+      !passenger.adult?()
+    end.sort_by do |minor|
+      minor.name
+    end.map do |minor_sorted|
+      minor_sorted.name
+    end
+  end
+
 end
