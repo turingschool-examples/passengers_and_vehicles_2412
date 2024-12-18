@@ -15,22 +15,24 @@ RSpec.describe Park do
         @passenger3 = Passenger.new({"name" => "Jimmy Doe", "age" => 10})
     end
 
-    describe '#initialize' do
-        it 'creates a park with a name, price, and empty vehicles array' do
+    #block above is initializing the park, vehicles, and passengers
+
+    describe '#initialize' do #will test the initialize method and reveal data just stored
+        it 'creates a park with a name, price, and empty vehicles array' do 
             expect(@park.name).to eq("Yellowstone")
             expect(@park.price).to eq(10)
             expect(@park.vehicles).to eq([])
         end
     end
 
-    describe '#add_vehicle' do
+    describe '#add_vehicle' do #will test the add_vehicle method and reveal data just stored
         it 'adds a vehicle to the park' do
             @park.add_vehicle(@vehicle1)
             expect(@park.vehicles).to include(@vehicle1)
         end
     end
 
-    describe '#passengers' do
+    describe '#passengers' do #will test the passengers method and reveal data just stored
         it 'returns a list of all passengers in the park' do
             @vehicle1.add_passenger(@passenger1)
             @vehicle1.add_passenger(@passenger2)
@@ -39,6 +41,7 @@ RSpec.describe Park do
             @park.add_vehicle(@vehicle2)
 
             expect(@park.passengers).to include(@passenger1, @passenger2, @passenger3)
+            #expecting all passengers to be included in the park
         end
     end
 
@@ -51,17 +54,23 @@ RSpec.describe Park do
             @park.add_vehicle(@vehicle2)
 
             expect(@park.revenue).to eq(20)
+            #expecting revenue to be 20
         end
     end
 
-    describe 'return value data types' do
+    describe 'return value data types' do #will test the data types of the return values
         it 'returns the correct data types' do
-            expect(@park.name.class).to eq(String)
-            expect(@park.price.class).to eq(Integer)
+            expect(@park.name.class).to eq(String) 
+            #expect the class of the name to be a string
+            #(from the park instance
+            #the .name return value data type)
+            expect(@park.price.class).to eq(Integer) 
             expect(@park.vehicles.class).to eq(Array)
             expect(@park.add_vehicle(@vehicle1).class).to eq(Array)
             expect(@park.passengers.class).to eq(Array)
             expect(@park.revenue.class).to eq(Integer)
+           
+            
         end
     end
 end
