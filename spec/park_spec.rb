@@ -47,5 +47,19 @@ RSpec.describe Park do
     expect(@yellowstone.list_passengers_in_park()).to eq([@charlie, @jude, @simone, @taylor, @finneas])
   end
 
+  it 'can calculate revenue generated based on vehicle entries' do
+    @vehicle1.add_passenger(@charlie)
+    @vehicle1.add_passenger(@jude)
+    @vehicle2.add_passenger(@simone)
+    @vehicle2.add_passenger(@taylor)
+    @vehicle3.add_passenger(@finneas)
+
+    @yellowstone.add_vehicle(@vehicle1)
+    @yellowstone.add_vehicle(@vehicle2)
+    expect(@yellowstone.revenue_generated()).to eq(80)
+
+    @yellowstone.add_vehicle(@vehicle3)
+    expect(@yellowstone.revenue_generated()).to eq(100)
+  end
 
 end
