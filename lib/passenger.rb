@@ -7,8 +7,8 @@ require 'pry'
 
 
 class Passenger #class being created
-    attr_reader :name, :age 
-    #attr reader to be able to access the symbol name and age that are being passed in the initialize method
+    attr_reader :name, :age, :driver
+    #attr reader to be able to access the symbol name, age, and driver that are being passed in the initialize method
 
     def initialize(details) #initialize method that takes in a hash called details
         @name = details["name"] #instance variable name is equal to the value of the key name in the hash details
