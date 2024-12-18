@@ -6,27 +6,26 @@ require './lib/passenger'
 require 'pry'
 
 
-class Passenger #class being created
-    attr_reader :name, :age, :driver
-    #attr reader to be able to access the symbol name, age, and driver that are being passed in the initialize method
+class Passenger
+  attr_reader :name, :age, :driver
 
-    def initialize(details) #initialize method that takes in a hash called details
-        @name = details["name"] #instance variable name is equal to the value of the key name in the hash details
-        @age = details["age"] #instance variable age is equal to the value of the key age in the hash details
-        @driver = false #instance variable driver is equal to false
-    end
+  def initialize(details)
+    @name = details["name"]
+    @age = details["age"]
+    @driver = false
+  end
 
-    def adult?
-        @age >= 18 #if the age is greater than or equal to 18, return true
-    end
+  def adult?
+    @age >= 18
+  end
 
-    def driver?
-        @driver #return the value of the instance variable driver
-    end
+  def driver?
+    @driver
+  end
 
-    def drive
-        @driver = true #change the value of the instance variable driver to true
-    end
+  def drive
+    @driver = true
+  end
 end
 
 
