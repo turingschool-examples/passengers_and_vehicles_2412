@@ -114,4 +114,28 @@ describe Park do
       end
     end
   end
+
+  describe '#minors' do
+    context 'when no visitors have entered' do
+      it 'has no minors' do
+        expect(everglades.minors).to eq([])
+      end
+    end
+
+    context 'when visitors have entered' do
+      before do
+        brad = Passenger.new({ 'name' => 'Brad', 'age' => 14 })
+        vehicle.add_passenger(taylor)
+        vehicle.add_passenger(charlie)
+        vehicle.add_passenger(jude)
+        vehicle.add_passenger(brad)
+
+        everglades.add_vehicle(vehicle)
+      end
+
+      it 'lists all minor names alphabetically' do
+        expect(everglades.minors).to eq(%w[Brad Taylor])
+      end
+    end
+  end
 end
