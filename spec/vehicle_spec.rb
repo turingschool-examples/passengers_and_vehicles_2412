@@ -43,7 +43,7 @@ RSpec.describe Vehicle do
     end
 
     describe '#passengers information' do
-        xit 'can carry passengers' do
+        it 'can carry passengers' do
             expect(@vehicle.passengers).to eq([])
 
             @vehicle.add_passenger(@charlie)
