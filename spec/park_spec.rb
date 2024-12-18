@@ -57,13 +57,14 @@ RSpec.describe Park do
 
     @yellowstone.add_vehicle(@vehicle1)
     @yellowstone.add_vehicle(@vehicle2)
-    expect(@yellowstone.revenue()).to eq(80)
+    expect(@yellowstone.revenue()).to eq(60)    #Used to be 80, now 60 (only adults are charged)
 
     @yellowstone.add_vehicle(@vehicle3)
-    expect(@yellowstone.revenue()).to eq(100)
+    expect(@yellowstone.revenue()).to eq(80)    #Was 100, now 80
   end
 
-  it 'helper method calculate_entrance_fee() for generating revenue works correctly' do
+  xit 'helper method calculate_entrance_fee() for generating revenue works correctly' do
+    #NOTE: this is no longer needed / legal, since I made the method private
     @vehicle1.add_passenger(@charlie)
     @vehicle1.add_passenger(@simone)
     @vehicle1.add_passenger(@taylor)
@@ -114,5 +115,8 @@ RSpec.describe Park do
     expect(@yellowstone.minors().length).to eq(2)
     expect(@yellowstone.minors()).to eq(["Abigail", "Taylor"])
   end
+
+  #NOTE: no test(s) for sorted_passengers(), since the method is private and basically can't be accessed outside the class.
+  #Felt confident in it since basically directly pulling already existing code to simply make more compact.  Works!
 
 end
