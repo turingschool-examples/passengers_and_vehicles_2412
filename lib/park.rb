@@ -5,7 +5,8 @@ class Park
               :price,
               :vehicles,
               :passengers,
-              :revenue
+              :revenue,
+              :patron_name
 
 
   def initialize(name, price)
@@ -13,6 +14,7 @@ class Park
     @price = price
     @vehicles = []
     @passengers = []
+    @patron_name = []
     @revenue = 0
   end
 
@@ -25,6 +27,18 @@ class Park
     @revenue = @passengers.count * @price
   end
 
-  
+  def patron_name
+    @patron_name = @passengers.map{|x| x.name}
+  end
+
+  def minors
+    minors = @passengers.select {|age| !age.adult?}
+    return minors
+  end
+
+  def adults
+   adults = @passengers.select {|age| age.adult?}
+   return adults
+  end
 
 end

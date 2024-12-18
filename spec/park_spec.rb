@@ -112,4 +112,13 @@ RSpec.describe Park do
     expect(@park_1.patron_name).to eq(['Charlie', 'Jude', 'Taylor', 'Patrick'])
   end
 
+  it 'has minors' do
+    expect(@park_1.minors).to eq([@taylor])
+  end
+
+  it 'has adults' do
+    expect(@park_1.adults).to eq([@charlie, @jude])
+  end
+
+
 end
