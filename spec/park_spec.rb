@@ -6,6 +6,13 @@ require './lib/passenger'
 RSpec.describe Park do
     before(:each) do
         @yosemite = Park.new({park_name: "Yosemite", entry_fee: 100})
+        @course = Vehicle.new("2077", "Course", "Samurai")
+        @jacob = Passenger.new({name: "Jacob", age: 29})
+        @baby = Passenger.new({name: "Chase", age: 1})
+        @toadking = Passenger.new({name: "The Toad King", age: 51})
+        @course.add_passenger(@jacob)
+        @course.add_passenger(@baby)
+        @course.add_passenger(@toadking)
     end
 
     describe 'initialize' do
@@ -25,6 +32,22 @@ RSpec.describe Park do
 
         it 'can tell how many vehicles are currently in it' do
             expect(@yosemite.vehicles).to eq([])
+        end
+    end
+
+    describe '#add_vehicle' do
+        it 'can keep track of vehicles entering park' do
+            @yosemite.add_vehicle(@course)
+
+            expect(@yosemite.vehicles).to eq([@course])
+        end
+    end
+
+    describe '#passengers' do
+        it 'can tell passengers in a vehicle' do
+            @yosemite.add_vehicle(@course)
+
+            expect(@yosemite.passengers).to eq([@jacob, @baby, @toadking])
         end
     end
 end

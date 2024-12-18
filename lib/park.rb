@@ -12,7 +12,8 @@ class Park
     end
 
     def passengers
-
+        @passengers = []
+        
     end
 
     def revenue
