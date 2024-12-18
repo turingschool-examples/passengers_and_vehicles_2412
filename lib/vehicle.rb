@@ -10,4 +10,12 @@ class Vehicle
     @passengers = []
   end
 
+  def speeding?()
+    @is_speeding
+  end
+
+  def speed()
+    @is_speeding = true
+  end
+
 end
