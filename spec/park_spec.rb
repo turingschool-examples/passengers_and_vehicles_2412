@@ -53,4 +53,15 @@ RSpec.describe Park do
             expect(@park.revenue).to eq(20)
         end
     end
+
+    describe 'return value data types' do
+        it 'returns the correct data types' do
+            expect(@park.name.class).to eq(String)
+            expect(@park.price.class).to eq(Integer)
+            expect(@park.vehicles.class).to eq(Array)
+            expect(@park.add_vehicle(@vehicle1).class).to eq(Array)
+            expect(@park.passengers.class).to eq(Array)
+            expect(@park.revenue.class).to eq(Integer)
+        end
+    end
 end
