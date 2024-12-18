@@ -24,4 +24,17 @@ RSpec.describe Park do
     @vehicle_2.add_passenger(@patrick)
   end
   
+  describe 'initialize' do
+    it 'exists' do
+      expect(@park_1).to be_an_instance_of(Park)
+    end
+
+    it 'has name' do
+      expect(@park_1.name).to eq('Jackson Hole')
+    end
+
+    it 'has ticket price' do
+      expect(@park_1.price).to eq(10)
+    end
+  end
 end
