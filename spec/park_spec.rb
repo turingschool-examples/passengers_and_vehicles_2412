@@ -64,5 +64,18 @@ RSpec.describe Park do
       expect(@park_1.passengers).to eq([@charlie, @jude, @taylor, @patrick])
     end
   end
+  
+  describe 'revenue' do
+    it 'starts with 0' do
+      expect(@park_1.revenue).to eq(0)
+    end
 
+    it 'can add revenue based on vehicle passengers' do
+      @park_1.add_vehicle(@vehicle_1)
+      @park_1.add_vehicle(@vehicle_2)
+
+      expect(@park_1.revenue).to eq(40)
+    end
+  end
+  
 end
