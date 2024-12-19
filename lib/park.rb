@@ -5,7 +5,8 @@ class Park
               :price,
               :vehicles,
               :passengers,
-              :revenue
+              :revenue,
+              :patron_name
 
 
   def initialize(name, price)
@@ -13,18 +14,31 @@ class Park
     @price = price
     @vehicles = []
     @passengers = []
+    @patron_name = []
     @revenue = 0
   end
 
   def add_vehicle(vehicle)
     @vehicles << vehicle
-    list_class = @vehicles.each {|x| x.passengers}
-    passenger_list = list_class.flat_map {|y| y.passengers}
-    passenger_list.each {|passenger| @passengers << passenger}
+    vehicle.passengers.each { |passenger| @passengers << passenger }
   end
 
   def revenue
-    @revenue += @passenger.count * @price
+    @revenue = @passengers.count * @price
+  end
+
+  def patron_name
+    @patron_name = @passengers.map{|x| x.name}
+  end
+
+  def minors
+    minors = @passengers.select {|age| !age.adult?}
+    return minors
+  end
+
+  def adults
+   adults = @passengers.select {|age| age.adult?}
+   return adults
   end
 
 end
